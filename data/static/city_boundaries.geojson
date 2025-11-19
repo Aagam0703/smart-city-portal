@@ -1,0 +1,23 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "New York City",
+        "population": 8419000,
+        "area": 783.8
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [-74.259, 40.477],
+          [-73.700, 40.477],
+          [-73.700, 40.917],
+          [-74.259, 40.917],
+          [-74.259, 40.477]
+        ]]
+      }
+    }
+  ]
+}

@@ -1,0 +1,308 @@
+{% extends 'base.html' %}
+
+{% block title %}Database Viewer - Smart City Portal{% endblock %}
+
+{% block content %}
+<div class="row mb-4">
+    <div class="col-12">
+        <h1>🗃️ Database Viewer</h1>
+        <p class="lead">Complete PostgreSQL Database Overview - Like phpMyAdmin</p>
+    </div>
+</div>
+
+{% if error %}
+<div class="alert alert-danger">
+    <strong>Error:</strong> {{ error }}
+</div>
+{% endif %}
+
+<!-- Database Overview -->
+<div class="dashboard-card mb-4">
+    <div class="card-header">
+        <h5 class="mb-0">📊 Database Statistics</h5>
+    </div>
+    <div class="card-body">
+        <div class="row text-center">
+            <div class="col-md-3">
+                <div class="border rounded p-3">
+                    <div class="h3 text-primary">{{ tables_count }}</div>
+                    <small class="text-muted">Total Tables</small>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="border rounded p-3">
+                    <div class="h3 text-success">{{ total_records }}</div>
+                    <small class="text-muted">Total Records</small>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="border rounded p-3">
+                    <div class="h3 text-info">{{ users.count }}</div>
+                    <small class="text-muted">Users</small>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="border rounded p-3">
+                    <div class="h3 text-warning">PostgreSQL</div>
+                    <small class="text-muted">Database Type</small>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Table List -->
+<div class="dashboard-card mb-4">
+    <div class="card-header">
+        <h5 class="mb-0">📋 Database Tables</h5>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            {% for table, count in table_counts.items %}
+            <div class="col-md-3 mb-3">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <h6>{{ table }}</h6>
+                        <div class="h4 text-primary">{{ count }}</div>
+                        <small class="text-muted">records</small>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+<!-- Users Table -->
+<div class="dashboard-card mb-4">
+    <div class="card-header">
+        <h5 class="mb-0">👥 Users Table (auth_user) - {{ users.count }} records</h5>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-striped table-bordered">
+                <thead class="table-dark">
+                    <tr>
+                        <th>ID</th>
+                        <th>Username</th>
+                        <th>Email</th>
+                        <th>Superuser</th>
+                        <th>Staff</th>
+                        <th>Active</th>
+                        <th>Last Login</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for user in users %}
+                    <tr>
+                        <td><strong>{{ user.id }}</strong></td>
+                        <td><code>{{ user.username }}</code></td>
+                        <td>{{ user.email|default:"-" }}</td>
+                        <td>
+                            {% if user.is_superuser %}
+                            <span class="badge bg-success">Yes</span>
+                            {% else %}
+                            <span class="badge bg-secondary">No</span>
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if user.is_staff %}
+                            <span class="badge bg-info">Yes</span>
+                            {% else %}
+                            <span class="badge bg-secondary">No</span>
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if user.is_active %}
+                            <span class="badge bg-success">Active</span>
+                            {% else %}
+                            <span class="badge bg-danger">Inactive</span>
+                            {% endif %}
+                        </td>
+                        <td>{{ user.last_login|date:"Y-m-d H:i"|default:"Never" }}</td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="7" class="text-center text-muted">No users found</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- Weather Data -->
+<div class="dashboard-card mb-4">
+    <div class="card-header">
+        <h5 class="mb-0">🌤️ Weather Data (data_weatherdata) - {{ weather_data|length }} records</h5>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-striped table-bordered">
+                <thead class="table-dark">
+                    <tr>
+                        <th>ID</th>
+                        <th>City</th>
+                        <th>Temperature</th>
+                        <th>Humidity</th>
+                        <th>Pressure</th>
+                        <th>Wind Speed</th>
+                        <th>Description</th>
+                        <th>Recorded At</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for weather in weather_data %}
+                    <tr>
+                        <td><strong>{{ weather.id }}</strong></td>
+                        <td>{{ weather.city }}</td>
+                        <td>{{ weather.temperature }}°C</td>
+                        <td>{{ weather.humidity }}%</td>
+                        <td>{{ weather.pressure }} hPa</td>
+                        <td>{{ weather.wind_speed }} m/s</td>
+                        <td><span class="badge bg-info">{{ weather.description }}</span></td>
+                        <td>{{ weather.recorded_at|date:"Y-m-d H:i" }}</td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="8" class="text-center text-muted">No weather data available</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- Transit Data -->
+<div class="dashboard-card mb-4">
+    <div class="card-header">
+        <h5 class="mb-0">�� Transit Data (data_transitdata) - {{ transit_data|length }} records</h5>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-striped table-bordered">
+                <thead class="table-dark">
+                    <tr>
+                        <th>ID</th>
+                        <th>Subway Delays</th>
+                        <th>Bus Delays</th>
+                        <th>Active Buses</th>
+                        <th>Active Trains</th>
+                        <th>Avg Wait Time</th>
+                        <th>Recorded At</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for transit in transit_data %}
+                    <tr>
+                        <td><strong>{{ transit.id }}</strong></td>
+                        <td>
+                            {% if transit.subway_delays > 10 %}
+                            <span class="badge bg-danger">{{ transit.subway_delays }}</span>
+                            {% elif transit.subway_delays > 5 %}
+                            <span class="badge bg-warning">{{ transit.subway_delays }}</span>
+                            {% else %}
+                            <span class="badge bg-success">{{ transit.subway_delays }}</span>
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if transit.bus_delays > 20 %}
+                            <span class="badge bg-danger">{{ transit.bus_delays }}</span>
+                            {% elif transit.bus_delays > 10 %}
+                            <span class="badge bg-warning">{{ transit.bus_delays }}</span>
+                            {% else %}
+                            <span class="badge bg-success">{{ transit.bus_delays }}</span>
+                            {% endif %}
+                        </td>
+                        <td>{{ transit.active_buses }}</td>
+                        <td>{{ transit.active_trains }}</td>
+                        <td>{{ transit.avg_wait_time }} min</td>
+                        <td>{{ transit.recorded_at|date:"Y-m-d H:i" }}</td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="7" class="text-center text-muted">No transit data available</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- Service Requests -->
+<div class="dashboard-card">
+    <div class="card-header">
+        <h5 class="mb-0">🏢 Service Requests (data_servicerequest) - {{ service_requests|length }} records</h5>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-striped table-bordered">
+                <thead class="table-dark">
+                    <tr>
+                        <th>ID</th>
+                        <th>Type</th>
+                        <th>Status</th>
+                        <th>Priority</th>
+                        <th>Location</th>
+                        <th>Description</th>
+                        <th>Reported At</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for service in service_requests %}
+                    <tr>
+                        <td><strong>{{ service.id }}</strong></td>
+                        <td>
+                            <span class="badge 
+                                {% if service.request_type == 'sanitation' %}bg-primary
+                                {% elif service.request_type == 'transportation' %}bg-success
+                                {% elif service.request_type == 'utilities' %}bg-warning
+                                {% elif service.request_type == 'public_safety' %}bg-danger
+                                {% else %}bg-secondary{% endif %}">
+                                {{ service.get_request_type_display }}
+                            </span>
+                        </td>
+                        <td>
+                            <span class="badge 
+                                {% if service.status == 'open' %}bg-warning
+                                {% elif service.status == 'in_progress' %}bg-info
+                                {% elif service.status == 'completed' %}bg-success
+                                {% else %}bg-secondary{% endif %}">
+                                {{ service.get_status_display }}
+                            </span>
+                        </td>
+                        <td>
+                            {% with ''|center:service.priority as range %}
+                            {% for _ in range %}⭐{% endfor %}
+                            {% endwith %}
+                        </td>
+                        <td><code>{{ service.location }}</code></td>
+                        <td><small>{{ service.description|truncatewords:10 }}</small></td>
+                        <td>{{ service.reported_at|date:"Y-m-d H:i" }}</td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="7" class="text-center text-muted">No service requests available</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div class="text-center mt-4">
+    <a href="{% url 'mentor-database-schema' %}" class="btn btn-info">
+        🗂️ View Database Schema
+    </a>
+    <a href="/admin/" class="btn btn-primary">
+        ⚙️ Django Admin Panel
+    </a>
+    <a href="http://localhost:5050" target="_blank" class="btn btn-success">
+        📊 pgAdmin (Port 5050)
+    </a>
+</div>
+{% endblock %}

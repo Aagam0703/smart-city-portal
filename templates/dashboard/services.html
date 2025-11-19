@@ -1,0 +1,218 @@
+{% extends 'base.html' %}
+
+{% block title %}Services Dashboard - Smart City Portal{% endblock %}
+
+{% block content %}
+<div class="row mb-4">
+    <div class="col-12">
+        <h1>City Services Dashboard</h1>
+        <p class="lead">Service requests tracking and management</p>
+    </div>
+</div>
+
+<!-- Services Overview Cards -->
+<div class="row mb-4">
+    <div class="col-md-3">
+        <div class="metric-card">
+            <div class="metric-label">Open Requests</div>
+            <div class="metric-value">156</div>
+            <div class="metric-trend">↑ 12 this week</div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="metric-card" style="background: linear-gradient(135deg, #f39c12, #e67e22);">
+            <div class="metric-label">In Progress</div>
+            <div class="metric-value">89</div>
+            <div class="metric-trend">→ Stable</div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="metric-card" style="background: linear-gradient(135deg, #27ae60, #2ecc71);">
+            <div class="metric-label">Completed Today</div>
+            <div class="metric-value">67</div>
+            <div class="metric-trend">↑ 8 from yesterday</div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="metric-card" style="background: linear-gradient(135deg, #3498db, #2980b9);">
+            <div class="metric-label">Avg Response Time</div>
+            <div class="metric-value">2.1h</div>
+            <div class="metric-trend">↓ 0.3h this week</div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-8">
+        <div class="dashboard-card">
+            <div class="card-header">
+                Service Requests Overview
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Type</th>
+                                <th>Status</th>
+                                <th>Priority</th>
+                                <th>Location</th>
+                                <th>Reported</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Sanitation</td>
+                                <td><span class="badge bg-warning">Open</span></td>
+                                <td>⭐⭐⭐</td>
+                                <td>123 Main St</td>
+                                <td>2 hours ago</td>
+                            </tr>
+                            <tr>
+                                <td>Transportation</td>
+                                <td><span class="badge bg-info">In Progress</span></td>
+                                <td>⭐⭐⭐⭐⭐</td>
+                                <td>456 Oak Ave</td>
+                                <td>1 hour ago</td>
+                            </tr>
+                            <tr>
+                                <td>Utilities</td>
+                                <td><span class="badge bg-success">Completed</span></td>
+                                <td>⭐⭐</td>
+                                <td>789 Pine Rd</td>
+                                <td>Today</td>
+                            </tr>
+                            <tr>
+                                <td>Public Safety</td>
+                                <td><span class="badge bg-warning">Open</span></td>
+                                <td>⭐⭐⭐⭐⭐</td>
+                                <td>321 Elm St</td>
+                                <td>30 min ago</td>
+                            </tr>
+                            <tr>
+                                <td>Other</td>
+                                <td><span class="badge bg-info">In Progress</span></td>
+                                <td>⭐</td>
+                                <td>654 Maple Dr</td>
+                                <td>3 hours ago</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="dashboard-card mb-4">
+            <div class="card-header">
+                Requests by Type
+            </div>
+            <div class="card-body">
+                <div class="mb-3">
+                    <div class="d-flex justify-content-between">
+                        <span>Sanitation</span>
+                        <span class="fw-bold">45</span>
+                    </div>
+                    <div class="progress mb-2" style="height: 8px;">
+                        <div class="progress-bar bg-primary" style="width: 45%"></div>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <div class="d-flex justify-content-between">
+                        <span>Transportation</span>
+                        <span class="fw-bold">38</span>
+                    </div>
+                    <div class="progress mb-2" style="height: 8px;">
+                        <div class="progress-bar bg-success" style="width: 38%"></div>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <div class="d-flex justify-content-between">
+                        <span>Utilities</span>
+                        <span class="fw-bold">52</span>
+                    </div>
+                    <div class="progress mb-2" style="height: 8px;">
+                        <div class="progress-bar bg-warning" style="width: 52%"></div>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <div class="d-flex justify-content-between">
+                        <span>Public Safety</span>
+                        <span class="fw-bold">29</span>
+                    </div>
+                    <div class="progress mb-2" style="height: 8px;">
+                        <div class="progress-bar bg-danger" style="width: 29%"></div>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <div class="d-flex justify-content-between">
+                        <span>Other</span>
+                        <span class="fw-bold">16</span>
+                    </div>
+                    <div class="progress mb-2" style="height: 8px;">
+                        <div class="progress-bar bg-info" style="width: 16%"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="dashboard-card">
+            <div class="card-header">
+                Response Time Metrics
+            </div>
+            <div class="card-body">
+                <div class="text-center mb-3">
+                    <div class="fw-bold text-primary" style="font-size: 2rem;">2.1h</div>
+                    <small class="text-muted">Average Response Time</small>
+                </div>
+                <div class="row text-center">
+                    <div class="col-6">
+                        <div class="fw-bold text-success">1.8h</div>
+                        <small class="text-muted">Sanitation</small>
+                    </div>
+                    <div class="col-6">
+                        <div class="fw-bold text-warning">3.2h</div>
+                        <small class="text-muted">Utilities</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Service Performance -->
+<div class="row mt-4">
+    <div class="col-12">
+        <div class="dashboard-card">
+            <div class="card-header">
+                Service Level Agreement (SLA) Performance
+            </div>
+            <div class="card-body">
+                <div class="row text-center">
+                    <div class="col-md-2">
+                        <div class="fw-bold text-success" style="font-size: 1.5rem;">78%</div>
+                        <small class="text-muted">Within SLA</small>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="fw-bold text-warning" style="font-size: 1.5rem;">15%</div>
+                        <small class="text-muted">Near SLA Limit</small>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="fw-bold text-danger" style="font-size: 1.5rem;">7%</div>
+                        <small class="text-muted">Breached SLA</small>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="progress" style="height: 20px;">
+                            <div class="progress-bar bg-success" style="width: 78%">78%</div>
+                            <div class="progress-bar bg-warning" style="width: 15%">15%</div>
+                            <div class="progress-bar bg-danger" style="width: 7%">7%</div>
+                        </div>
+                        <small class="text-muted">Overall SLA Compliance</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

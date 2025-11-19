@@ -1,0 +1,222 @@
+{% extends 'base.html' %}
+
+{% block title %}Smart City Portal - Dashboard{% endblock %}
+
+{% block content %}
+<div class="row mb-4">
+    <div class="col-12">
+        <div class="d-flex justify-content-between align-items-center">
+            <h1>City Overview Dashboard</h1>
+            <div>
+                <button id="refreshData" class="btn btn-primary">
+                    Refresh Data
+                </button>
+                <small class="text-muted ms-2">Last refreshed: <span id="last-refreshed">Just now</span></small>
+            </div>
+        </div>
+        <p class="lead">Real-time monitoring and analytics for city operations</p>
+    </div>
+</div>
+
+<!-- Quick Stats -->
+<div class="row mb-4">
+    <div class="col-md-3">
+        <div class="metric-card">
+            <div class="metric-label">Active Alerts</div>
+            <div class="metric-value" id="stat-active_alerts">12</div>
+            <div class="metric-trend">↓ 2 from yesterday</div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="metric-card" style="background: linear-gradient(135deg, #27ae60, #2ecc71);">
+            <div class="metric-label">Service Requests</div>
+            <div class="metric-value" id="stat-total_requests">156</div>
+            <div class="metric-trend">↑ 8% this week</div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="metric-card" style="background: linear-gradient(135deg, #e74c3c, #c0392b);">
+            <div class="metric-label">Avg Response Time</div>
+            <div class="metric-value" id="stat-avg_response_time">2.1h</div>
+            <div class="metric-trend">↓ 0.3h from last week</div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="metric-card" style="background: linear-gradient(135deg, #f39c12, #e67e22);">
+            <div class="metric-label">System Status</div>
+            <div class="metric-value" id="stat-system_status">Operational</div>
+            <div class="metric-trend">All systems normal</div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <!-- Dashboard Navigation -->
+    <div class="col-md-4">
+        <div class="dashboard-card">
+            <div class="card-header">
+                Quick Access Dashboards
+            </div>
+            <div class="card-body">
+                <div class="list-group">
+                    <a href="{% url 'dashboard-view' 'transit' %}" class="list-group-item list-group-item-action">
+                        🚆 Transit Dashboard
+                        <small class="text-muted d-block">Real-time public transportation monitoring</small>
+                    </a>
+                    <a href="{% url 'dashboard-view' 'weather' %}" class="list-group-item list-group-item-action">
+                        ⛅ Weather Dashboard
+                        <small class="text-muted d-block">Weather conditions and forecasts</small>
+                    </a>
+                    <a href="{% url 'dashboard-view' 'services' %}" class="list-group-item list-group-item-action">
+                        🏢 Services Dashboard
+                        <small class="text-muted d-block">City services and request tracking</small>
+                    </a>
+                    <a href="{% url 'dashboard-view' 'statistics' %}" class="list-group-item list-group-item-action">
+                        📊 City Statistics
+                        <small class="text-muted d-block">Demographic and economic data</small>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Recent Alerts -->
+        <div class="dashboard-card mt-4">
+            <div class="card-header">
+                Recent Alerts
+            </div>
+            <div class="card-body">
+                <div id="recent-alerts">
+                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                        High traffic congestion in downtown area
+                        <small class="text-muted d-block">5 min ago</small>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                    </div>
+                    <div class="alert alert-info alert-dismissible fade show" role="alert">
+                        Weather advisory: Light rain expected
+                        <small class="text-muted d-block">15 min ago</small>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Dashboard Content -->
+    <div class="col-md-8">
+        <div class="dashboard-card">
+            <div class="card-header">
+                City Operations Overview
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h6>Public Transit</h6>
+                        <div class="progress mb-2">
+                            <div class="progress-bar bg-success" style="width: 85%">85% On Time</div>
+                        </div>
+                        <small class="text-muted">Subway and bus performance</small>
+                    </div>
+                    <div class="col-md-6">
+                        <h6>Service Response</h6>
+                        <div class="progress mb-2">
+                            <div class="progress-bar bg-info" style="width: 78%">78% Within SLA</div>
+                        </div>
+                        <small class="text-muted">311 service requests</small>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-md-6">
+                        <h6>Infrastructure</h6>
+                        <div class="progress mb-2">
+                            <div class="progress-bar bg-warning" style="width: 92%">92% Operational</div>
+                        </div>
+                        <small class="text-muted">Bridges, roads, and utilities</small>
+                    </div>
+                    <div class="col-md-6">
+                        <h6>Public Safety</h6>
+                        <div class="progress mb-2">
+                            <div class="progress-bar bg-danger" style="width: 95%">95% Coverage</div>
+                        </div>
+                        <small class="text-muted">Emergency response areas</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Data Overview -->
+        <div class="row mt-4">
+            <div class="col-md-6">
+                <div class="dashboard-card h-100">
+                    <div class="card-header">
+                        Data Sources
+                    </div>
+                    <div class="card-body">
+                        <ul class="list-unstyled">
+                            <li class="mb-2">
+                                <span class="badge bg-success me-2">✓</span>
+                                Weather API
+                                <small class="text-muted d-block">Updated every 10 minutes</small>
+                            </li>
+                            <li class="mb-2">
+                                <span class="badge bg-success me-2">✓</span>
+                                Transit API  
+                                <small class="text-muted d-block">Real-time updates</small>
+                            </li>
+                            <li class="mb-2">
+                                <span class="badge bg-success me-2">✓</span>
+                                Services Database
+                                <small class="text-muted d-block">Live connection</small>
+                            </li>
+                            <li class="mb-2">
+                                <span class="badge bg-warning me-2">⟳</span>
+                                Census Data
+                                <small class="text-muted d-block">Updated monthly</small>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="dashboard-card h-100">
+                    <div class="card-header">
+                        System Information
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-6">
+                                <small class="text-muted">Uptime</small>
+                                <div class="fw-bold">99.95%</div>
+                            </div>
+                            <div class="col-6">
+                                <small class="text-muted">Active Users</small>
+                                <div class="fw-bold">247</div>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-6">
+                                <small class="text-muted">Data Points</small>
+                                <div class="fw-bold">1.2M</div>
+                            </div>
+                            <div class="col-6">
+                                <small class="text-muted">API Calls</small>
+                                <div class="fw-bold">45K/day</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    // Initialize dashboard functionality
+    document.addEventListener('DOMContentLoaded', function() {
+        // Add any dashboard-specific JavaScript here
+    });
+</script>
+{% endblock %}

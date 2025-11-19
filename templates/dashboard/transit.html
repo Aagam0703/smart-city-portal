@@ -1,0 +1,109 @@
+{% extends 'base.html' %}
+
+{% block title %}Transit Dashboard - Smart City Portal{% endblock %}
+
+{% block content %}
+<div class="row mb-4">
+    <div class="col-12">
+        <h1>Public Transit Dashboard</h1>
+        <p class="lead">Real-time monitoring of public transportation systems</p>
+    </div>
+</div>
+
+<!-- Simple Transit Dashboard -->
+<div class="row">
+    <div class="col-12">
+        <div class="dashboard-card">
+            <div class="card-header">
+                Transit Performance Metrics
+            </div>
+            <div class="card-body">
+                <div class="row text-center">
+                    <div class="col-md-3">
+                        <div class="metric-card">
+                            <div class="metric-label">Subway Delays</div>
+                            <div class="metric-value">15</div>
+                            <div class="metric-trend">↑ 3 from yesterday</div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="metric-card" style="background: linear-gradient(135deg, #27ae60, #2ecc71);">
+                            <div class="metric-label">Bus Delays</div>
+                            <div class="metric-value">12</div>
+                            <div class="metric-trend">↓ 2 from yesterday</div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="metric-card" style="background: linear-gradient(135deg, #e74c3c, #c0392b);">
+                            <div class="metric-label">Active Buses</div>
+                            <div class="metric-value">245</div>
+                            <div class="metric-trend">→ Stable</div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="metric-card" style="background: linear-gradient(135deg, #f39c12, #e67e22);">
+                            <div class="metric-label">Avg Wait Time</div>
+                            <div class="metric-value">4.2 min</div>
+                            <div class="metric-trend">↓ 0.3 min</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mt-4">
+                    <h5>Transit Performance Over Time</h5>
+                    <p class="text-muted">Interactive charts will be displayed here when data visualization is configured.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Additional Transit Information -->
+<div class="row mt-4">
+    <div class="col-md-6">
+        <div class="dashboard-card">
+            <div class="card-header">
+                Service Advisories
+            </div>
+            <div class="card-body">
+                <div class="alert alert-info">
+                    <strong>Info:</strong> Scheduled maintenance on Blue Line this weekend
+                </div>
+                <div class="alert alert-warning">
+                    <strong>Delay:</strong> 15-minute delays on North-South bus routes due to construction
+                </div>
+                <div class="alert alert-success">
+                    <strong>Resolved:</strong> Signal issues on Green Line have been fixed
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="dashboard-card">
+            <div class="card-header">
+                Ridership Statistics
+            </div>
+            <div class="card-body">
+                <div class="row text-center">
+                    <div class="col-4">
+                        <div class="fw-bold text-primary">245K</div>
+                        <small>Daily Riders</small>
+                    </div>
+                    <div class="col-4">
+                        <div class="fw-bold text-success">85%</div>
+                        <small>On-Time Performance</small>
+                    </div>
+                    <div class="col-4">
+                        <div class="fw-bold text-warning">12</div>
+                        <small>Active Delays</small>
+                    </div>
+                </div>
+                <hr>
+                <small class="text-muted">
+                    Last updated: Just now
+                </small>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

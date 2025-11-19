@@ -1,0 +1,118 @@
+{% extends 'base.html' %}
+
+{% block title %}Weather Dashboard - Smart City Portal{% endblock %}
+
+{% block content %}
+<div class="row mb-4">
+    <div class="col-12">
+        <h1>Weather Monitoring Dashboard</h1>
+        <p class="lead">Real-time weather conditions and forecasts</p>
+    </div>
+</div>
+
+<!-- Simple Weather Dashboard -->
+<div class="row">
+    <div class="col-12">
+        <div class="dashboard-card">
+            <div class="card-header">
+                Weather Conditions & Forecasts
+            </div>
+            <div class="card-body">
+                <div class="row text-center">
+                    <div class="col-md-3">
+                        <div class="metric-card">
+                            <div class="metric-label">Current Temp</div>
+                            <div class="metric-value">22°C</div>
+                            <div class="metric-trend">Feels like 24°C</div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="metric-card" style="background: linear-gradient(135deg, #27ae60, #2ecc71);">
+                            <div class="metric-label">Humidity</div>
+                            <div class="metric-value">65%</div>
+                            <div class="metric-trend">Comfortable</div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="metric-card" style="background: linear-gradient(135deg, #3498db, #2980b9);">
+                            <div class="metric-label">Pressure</div>
+                            <div class="metric-value">1013 hPa</div>
+                            <div class="metric-trend">Stable</div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="metric-card" style="background: linear-gradient(135deg, #f39c12, #e67e22);">
+                            <div class="metric-label">Wind Speed</div>
+                            <div class="metric-value">3.5 m/s</div>
+                            <div class="metric-trend">Light breeze</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mt-4">
+                    <h5>Weather Trends</h5>
+                    <p class="text-muted">Interactive weather charts will be displayed here when data visualization is configured.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Weather Alerts and Forecast -->
+<div class="row mt-4">
+    <div class="col-md-6">
+        <div class="dashboard-card">
+            <div class="card-header">
+                Weather Alerts
+            </div>
+            <div class="card-body">
+                <div class="alert alert-warning">
+                    <strong>Heat Advisory:</strong> High temperatures expected through Friday
+                </div>
+                <div class="alert alert-info">
+                    <strong>Air Quality:</strong> Moderate air quality index today
+                </div>
+                <div class="alert alert-success">
+                    <strong>No Precipitation:</strong> Dry conditions expected for next 48 hours
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="dashboard-card">
+            <div class="card-header">
+                7-Day Forecast
+            </div>
+            <div class="card-body">
+                <div class="row text-center">
+                    <div class="col">
+                        <div class="fw-bold">Mon</div>
+                        <div class="h4">22°</div>
+                        <small>Sunny</small>
+                    </div>
+                    <div class="col">
+                        <div class="fw-bold">Tue</div>
+                        <div class="h4">24°</div>
+                        <small>Partly Cloudy</small>
+                    </div>
+                    <div class="col">
+                        <div class="fw-bold">Wed</div>
+                        <div class="h4">21°</div>
+                        <small>Rain</small>
+                    </div>
+                    <div class="col">
+                        <div class="fw-bold">Thu</div>
+                        <div class="h4">23°</div>
+                        <small>Cloudy</small>
+                    </div>
+                    <div class="col">
+                        <div class="fw-bold">Fri</div>
+                        <div class="h4">25°</div>
+                        <small>Sunny</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,53 @@
+{% extends "admin/base.html" %}
+{% load static %}
+
+{% block title %}{{ title }} | Smart City Portal Admin{% endblock %}
+
+{% block extrastyle %}
+<style>
+:root {
+    --primary-color: #2c3e50;
+    --secondary-color: #3498db;
+}
+
+#header {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)) !important;
+    color: white !important;
+}
+
+#branding h1 {
+    color: white !important;
+    font-weight: 700 !important;
+}
+
+.module h2, .module caption, .inline-group h2 {
+    background: linear-gradient(135deg, var(--secondary-color), var(--primary-color)) !important;
+}
+
+div.breadcrumbs {
+    background: var(--primary-color) !important;
+}
+
+.button, input[type=submit], input[type=button], .submit-row input, a.button {
+    background: var(--secondary-color) !important;
+}
+
+.button:hover, input[type=submit]:hover, input[type=button]:hover {
+    background: var(--primary-color) !important;
+}
+
+/* Smart City Portal branding */
+#branding h1:before {
+    content: "🏙️ ";
+    margin-right: 8px;
+}
+</style>
+{% endblock %}
+
+{% block branding %}
+<h1 id="site-name">
+    <a href="{% url 'admin:index' %}">Smart City Portal Administration</a>
+</h1>
+{% endblock %}
+
+{% block nav-global %}{% endblock %}

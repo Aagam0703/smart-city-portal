@@ -1,0 +1,290 @@
+{% extends 'base.html' %}
+
+{% block title %}City Statistics - Smart City Portal{% endblock %}
+
+{% block content %}
+<div class="row mb-4">
+    <div class="col-12">
+        <h1>City Statistics Dashboard</h1>
+        <p class="lead">Demographic, economic, and urban development data</p>
+    </div>
+</div>
+
+<!-- Key City Metrics -->
+<div class="row mb-4">
+    <div class="col-md-3">
+        <div class="metric-card">
+            <div class="metric-label">Population</div>
+            <div class="metric-value">8.5M</div>
+            <div class="metric-trend">↑ 1.2% YoY</div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="metric-card" style="background: linear-gradient(135deg, #27ae60, #2ecc71);">
+            <div class="metric-label">GDP Growth</div>
+            <div class="metric-value">2.5%</div>
+            <div class="metric-trend">↑ 0.2% QoQ</div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="metric-card" style="background: linear-gradient(135deg, #e74c3c, #c0392b);">
+            <div class="metric-label">Unemployment</div>
+            <div class="metric-value">3.9%</div>
+            <div class="metric-trend">↓ 0.2% YoY</div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="metric-card" style="background: linear-gradient(135deg, #f39c12, #e67e22);">
+            <div class="metric-label">Crime Rate</div>
+            <div class="metric-value">2.8%</div>
+            <div class="metric-trend">↓ 0.1% YoY</div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <!-- Demographic Data -->
+    <div class="col-md-6">
+        <div class="dashboard-card mb-4">
+            <div class="card-header">
+                Demographic Overview
+            </div>
+            <div class="card-body">
+                <div class="row text-center mb-4">
+                    <div class="col-4">
+                        <div class="fw-bold text-primary">4.1M</div>
+                        <small class="text-muted">Male</small>
+                    </div>
+                    <div class="col-4">
+                        <div class="fw-bold text-primary">4.4M</div>
+                        <small class="text-muted">Female</small>
+                    </div>
+                    <div class="col-4">
+                        <div class="fw-bold text-primary">1.2M</div>
+                        <small class="text-muted">Under 18</small>
+                    </div>
+                </div>
+                
+                <h6>Age Distribution</h6>
+                <div class="mb-3">
+                    <div class="d-flex justify-content-between">
+                        <span>0-17 years</span>
+                        <span class="fw-bold">14%</span>
+                    </div>
+                    <div class="progress mb-2" style="height: 8px;">
+                        <div class="progress-bar bg-info" style="width: 14%"></div>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <div class="d-flex justify-content-between">
+                        <span>18-34 years</span>
+                        <span class="fw-bold">28%</span>
+                    </div>
+                    <div class="progress mb-2" style="height: 8px;">
+                        <div class="progress-bar bg-success" style="width: 28%"></div>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <div class="d-flex justify-content-between">
+                        <span>35-54 years</span>
+                        <span class="fw-bold">35%</span>
+                    </div>
+                    <div class="progress mb-2" style="height: 8px;">
+                        <div class="progress-bar bg-warning" style="width: 35%"></div>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <div class="d-flex justify-content-between">
+                        <span>55+ years</span>
+                        <span class="fw-bold">23%</span>
+                    </div>
+                    <div class="progress mb-2" style="height: 8px;">
+                        <div class="progress-bar bg-danger" style="width: 23%"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="dashboard-card">
+            <div class="card-header">
+                Economic Indicators
+            </div>
+            <div class="card-body">
+                <div class="mb-3">
+                    <div class="d-flex justify-content-between">
+                        <span>Median Household Income</span>
+                        <span class="fw-bold text-success">$78,500</span>
+                    </div>
+                    <small class="text-muted">↑ 3.2% from last year</small>
+                </div>
+                <div class="mb-3">
+                    <div class="d-flex justify-content-between">
+                        <span>Poverty Rate</span>
+                        <span class="fw-bold text-danger">12.3%</span>
+                    </div>
+                    <small class="text-muted">↓ 0.8% from last year</small>
+                </div>
+                <div class="mb-3">
+                    <div class="d-flex justify-content-between">
+                        <span>Home Ownership</span>
+                        <span class="fw-bold text-primary">54.7%</span>
+                    </div>
+                    <small class="text-muted">↑ 1.1% from last year</small>
+                </div>
+                <div class="mb-3">
+                    <div class="d-flex justify-content-between">
+                        <span>Business Growth</span>
+                        <span class="fw-bold text-success">+2,345</span>
+                    </div>
+                    <small class="text-muted">New businesses this year</small>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Urban Development -->
+    <div class="col-md-6">
+        <div class="dashboard-card mb-4">
+            <div class="card-header">
+                Urban Development
+            </div>
+            <div class="card-body">
+                <div class="row text-center mb-4">
+                    <div class="col-4">
+                        <div class="fw-bold text-primary">784 km²</div>
+                        <small class="text-muted">City Area</small>
+                    </div>
+                    <div class="col-4">
+                        <div class="fw-bold text-success">10,841/km²</div>
+                        <small class="text-muted">Population Density</small>
+                    </div>
+                    <div class="col-4">
+                        <div class="fw-bold text-info">45.2%</div>
+                        <small class="text-muted">Green Space</small>
+                    </div>
+                </div>
+
+                <h6>Land Use Distribution</h6>
+                <div class="mb-3">
+                    <div class="d-flex justify-content-between">
+                        <span>Residential</span>
+                        <span class="fw-bold">42%</span>
+                    </div>
+                    <div class="progress mb-2" style="height: 8px;">
+                        <div class="progress-bar bg-primary" style="width: 42%"></div>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <div class="d-flex justify-content-between">
+                        <span>Commercial</span>
+                        <span class="fw-bold">18%</span>
+                    </div>
+                    <div class="progress mb-2" style="height: 8px;">
+                        <div class="progress-bar bg-success" style="width: 18%"></div>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <div class="d-flex justify-content-between">
+                        <span>Industrial</span>
+                        <span class="fw-bold">12%</span>
+                    </div>
+                    <div class="progress mb-2" style="height: 8px;">
+                        <div class="progress-bar bg-warning" style="width: 12%"></div>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <div class="d-flex justify-content-between">
+                        <span>Public/Green Space</span>
+                        <span class="fw-bold">28%</span>
+                    </div>
+                    <div class="progress mb-2" style="height: 8px;">
+                        <div class="progress-bar bg-info" style="width: 28%"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="dashboard-card">
+            <div class="card-header">
+                Education & Health
+            </div>
+            <div class="card-body">
+                <div class="mb-3">
+                    <div class="d-flex justify-content-between">
+                        <span>High School Graduation</span>
+                        <span class="fw-bold text-success">89.2%</span>
+                    </div>
+                    <small class="text-muted">↑ 2.1% from last year</small>
+                </div>
+                <div class="mb-3">
+                    <div class="d-flex justify-content-between">
+                        <span>College Degree</span>
+                        <span class="fw-bold text-primary">45.8%</span>
+                    </div>
+                    <small class="text-muted">↑ 3.4% from last year</small>
+                </div>
+                <div class="mb-3">
+                    <div class="d-flex justify-content-between">
+                        <span>Life Expectancy</span>
+                        <span class="fw-bold text-info">81.3 years</span>
+                    </div>
+                    <small class="text-muted">↑ 0.4 years from last year</small>
+                </div>
+                <div class="mb-3">
+                    <div class="d-flex justify-content-between">
+                        <span>Hospital Beds</span>
+                        <span class="fw-bold text-warning">2.8/1,000</span>
+                    </div>
+                    <small class="text-muted">Per 1,000 residents</small>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- City Progress -->
+<div class="row mt-4">
+    <div class="col-12">
+        <div class="dashboard-card">
+            <div class="card-header">
+                City Development Progress
+            </div>
+            <div class="card-body">
+                <div class="row text-center">
+                    <div class="col-md-2">
+                        <div class="fw-bold text-success" style="font-size: 1.5rem;">85%</div>
+                        <small class="text-muted">Infrastructure</small>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="fw-bold text-primary" style="font-size: 1.5rem;">78%</div>
+                        <small class="text-muted">Digital Services</small>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="fw-bold text-info" style="font-size: 1.5rem;">92%</div>
+                        <small class="text-muted">Public Safety</small>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="fw-bold text-warning" style="font-size: 1.5rem;">65%</div>
+                        <small class="text-muted">Sustainability</small>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="fw-bold text-danger" style="font-size: 1.5rem;">88%</div>
+                        <small class="text-muted">Economic Growth</small>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="fw-bold text-success" style="font-size: 1.5rem;">81%</div>
+                        <small class="text-muted">Overall Progress</small>
+                    </div>
+                </div>
+                <div class="progress mt-3" style="height: 20px;">
+                    <div class="progress-bar bg-success" style="width: 85%">85%</div>
+                    <div class="progress-bar bg-primary" style="width: 78%">78%</div>
+                    <div class="progress-bar bg-info" style="width: 92%">92%</div>
+                    <div class="progress-bar bg-warning" style="width: 65%">65%</div>
+                    <div class="progress-bar bg-danger" style="width: 88%">88%</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

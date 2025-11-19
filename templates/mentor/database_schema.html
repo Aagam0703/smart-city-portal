@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+
+{% block title %}Database Schema - Smart City Portal{% endblock %}
+
+{% block content %}
+<div class="row mb-4">
+    <div class="col-12">
+        <h1>🗂️ Database Schema</h1>
+        <p class="lead">PostgreSQL Database Structure and Relationships</p>
+    </div>
+</div>
+
+{% if error %}
+<div class="alert alert-danger">
+    <strong>Error:</strong> {{ error }}
+</div>
+{% endif %}
+
+{% for table_name, columns in schema_by_table.items %}
+<div class="dashboard-card mb-4">
+    <div class="card-header">
+        <h5 class="mb-0">📊 Table: <code>{{ table_name }}</code></h5>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Column Name</th>
+                        <th>Data Type</th>
+                        <th>Nullable</th>
+                        <th>Default Value</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for column in columns %}
+                    <tr>
+                        <td><strong>{{ column.column_name }}</strong></td>
+                        <td><code>{{ column.data_type }}</code></td>
+                        <td>
+                            {% if column.is_nullable == 'YES' %}
+                            <span class="badge bg-warning">NULL</span>
+                            {% else %}
+                            <span class="badge bg-success">NOT NULL</span>
+                            {% endif %}
+                        </td>
+                        <td><small>{{ column.column_default|default:"-" }}</small></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% empty %}
+<div class="alert alert-warning">
+    No schema data available. The database might be empty or not connected.
+</div>
+{% endfor %}
+
+<div class="text-center">
+    <a href="{% url 'mentor-database-viewer' %}" class="btn btn-primary">
+        📋 Back to Data Viewer
+    </a>
+</div>
+{% endblock %}
