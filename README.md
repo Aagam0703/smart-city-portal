@@ -46,16 +46,16 @@ A comprehensive Django-based web application for smart city data management, vis
    docker-compose up --build -d
 3. **🌐 Main Website: **
    ```bash
-   https://your-codespace-8000.app.github.dev/
+   https://ominous-guide-q6p55x4r5j42vx5-8000.app.github.dev/
 
 4. **📊 Database Viewer: **
    ```bash
-   https://your-codespace-8000.app.github.dev/mentor/
+   https://ominous-guide-q6p55x4r5j42vx5-8000.app.github.dev/mentor/
 
 5. ⚙️ Django Admin: **
    ```bash
-   https://your-codespace-8000.app.github.dev/admin/
+   https://ominous-guide-q6p55x4r5j42vx5-8000.app.github.dev/admin/
 
 6. **🗂️ pgAdmin: **
    ```bash
-   https://your-codespace-5050.app.github.dev
+   https://ominous-guide-q6p55x4r5j42vx5-5050.app.github.dev
