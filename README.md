@@ -46,16 +46,16 @@ A comprehensive Django-based web application for smart city data management, vis
    docker-compose up --build -d
 3. **🌐 Main Website: **
    ```bash
-   https://ominous-guide-q6p55x4r5j42vx5-8000.app.github.dev/
+   https://glorious-space-dollop-wrpr5wqqvwrp257pj-8000.app.github.dev/
 
 4. **📊 Database Viewer: **
    ```bash
-   https://ominous-guide-q6p55x4r5j42vx5-8000.app.github.dev/mentor/
+   https://glorious-space-dollop-wrpr5wqqvwrp257pj-8000.app.github.dev/mentor/
 
 5. ⚙️ Django Admin: **
    ```bash
-   https://ominous-guide-q6p55x4r5j42vx5-8000.app.github.dev/admin/
+   https://glorious-space-dollop-wrpr5wqqvwrp257pj-8000.app.github.dev/admin/
 
 6. **🗂️ pgAdmin: **
    ```bash
-   https://ominous-guide-q6p55x4r5j42vx5-5050.app.github.dev
+   https://glorious-space-dollop-wrpr5wqqvwrp257pj-5050.app.github.dev
