@@ -44,3 +44,4 @@ A comprehensive Django-based web application for smart city data management, vis
 2. **Start Application**
    ```bash
    docker-compose up --build -d
+3. 
