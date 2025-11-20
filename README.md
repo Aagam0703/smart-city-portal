@@ -42,4 +42,5 @@ A comprehensive Django-based web application for smart city data management, vis
    git clone <your-repository-url>
    cd smart-city-portal
 2. **Start Application**
+   ```bash
    docker-compose up --build -d
